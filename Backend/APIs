@@ -1,1 +1,109 @@
-s
+🔌 APIs you need
+1. Authentication API
+Handles registration, login and OTP.
+POST /api/auth/register
+POST /api/auth/login
+POST /api/auth/verify-mobile-otp
+POST /api/auth/verify-email-otp
+POST /api/auth/forgot-password
+GET  /api/auth/profile
+
+
+2. Vehicle API 🚗
+GET    /api/vehicles
+POST   /api/vehicles
+PUT    /api/vehicles/:id
+DELETE /api/vehicles/:id
+PUT    /api/vehicles/:id/primary
+For example:
+{
+  "type": "car",
+  "vehicleNumber": "MP04AB1234",
+  "brand": "Tata",
+  "model": "Nexon EV",
+  "batteryCapacity": 40,
+  "connector": "CCS2"
+}
+
+
+3. Charging Station API ⚡
+GET /api/stations
+GET /api/stations/:id
+GET /api/stations/:id/chargers
+GET /api/stations/nearby
+
+
+4. Booking API 📅
+POST   /api/bookings
+GET    /api/bookings
+GET    /api/bookings/:id
+PUT    /api/bookings/:id/cancel
+GET    /api/bookings/:id/qr
+Booking data:
+{
+  "vehicleId": 1,
+  "stationId": 5,
+  "chargerId": 12,
+  "date": "2026-09-10",
+  "timeSlot": "10:00-11:00"
+}
+
+
+
+5. AI Recommendation API 🤖
+GET /api/recommendations/charging-time
+It can consider:
+Grid Load
+Station Utilization
+Transformer Utilization
+Waiting Time
+Tariff
+Available Slots
+Example response:
+{
+  "recommendedTime": "10:00 PM",
+  "reason": "Lower grid demand and station utilization",
+  "estimatedCost": 180,
+  "gridLoad": "62%"
+}
+
+
+
+
+6. Charging Session API 🔋
+POST /api/charging/start
+GET  /api/charging/:sessionId
+PUT  /api/charging/:sessionId/stop
+GET  /api/charging/history
+It can return:
+{
+  "battery": 78,
+  "energyDelivered": 24.5,
+  "power": 60,
+  "duration": 32,
+  "cost": 245
+}
+
+
+7. Grid Intelligence API 🌍
+GET /api/grid/demand
+GET /api/grid/forecast
+GET /api/grid/transformers
+GET /api/grid/stress
+GET /api/grid/hotspots
+POST /api/grid/optimize
+POST /api/grid/what-if
+{
+  "zone": "Bengaluru",
+  "currentLoad": 78,
+  "transformerUtilization": 84,
+  "risk": "MEDIUM"
+}
+
+
+8. Analytics API 📊
+GET /api/analytics/overview
+GET /api/analytics/peak-load
+GET /api/analytics/station-utilization
+GET /api/analytics/charging-cost
+GET /api/analytics/forecast-accuracy
