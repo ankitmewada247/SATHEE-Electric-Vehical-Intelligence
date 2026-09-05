@@ -107,3 +107,27 @@ GET /api/analytics/peak-load
 GET /api/analytics/station-utilization
 GET /api/analytics/charging-cost
 GET /api/analytics/forecast-accuracy
+
+🔄 Overall connection
+
+                 SATHEE FRONTEND
+                       │
+                       │ HTTP Requests
+                       ▼
+                ┌──────────────┐
+                │   server.js  │
+                └──────┬───────┘
+                       │
+       ┌───────────────┼────────────────┐
+       ▼               ▼                ▼
+    Auth API       Booking API      Station API
+       │               │                │
+       └───────────────┼────────────────┘
+                       ▼
+                   DATABASE
+                       │
+                       ▼
+                 AI / ML ENGINE
+                       │
+                       ▼
+                GRID INTELLIGENCE
